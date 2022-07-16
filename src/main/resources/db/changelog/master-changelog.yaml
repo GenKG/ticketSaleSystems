@@ -1,4 +1,10 @@
 databaseChangeLog:
-  -  preConditions:
-       - runningAs:
-           username:  postgres
+  - include:
+      file: tables\event-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables\ticket-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: tables\order-table.yaml
+      relativeToChangelogFile: true

@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Safonov
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: client_name
+                  type: text
+                  constraints:
+                    nullable: true
+              - column:
+                  name: client_address
+                  type: text
+                  constraints:
+                    nullable: true
+              - column:
+                  name: client_phone
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tickets_count
+                  type: int
+                  constraints:
+                    nullable: true
+              - column:
+                  name: sum
+                  type: int
+                  constraints:
+                    nullable: true
+              - column:
+                  name: ticket_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: ticket_fkey_id
+                    references: tickets(id)
+        - rollback:
+            droptable:
+              tableName: orders
