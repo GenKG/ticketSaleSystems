@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <preConditions>
+        <runningAs username="postgres"/>
+    </preConditions>
+
+    <changeSet id="3" author="Safonov">
+        <createTable tableName="tickets">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="number" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sum" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="order_id" type="int">
+                <constraints nullable="false" foreignKeyName="order_fkey" references="orders(id)"/>
+            </column>
+            <column name="event_id" type="int">
+                <constraints nullable="false" foreignKeyName="event_fkey" references="events(id)"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="tickets"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

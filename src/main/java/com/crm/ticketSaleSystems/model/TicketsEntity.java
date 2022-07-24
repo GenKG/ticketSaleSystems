@@ -1,10 +1,17 @@
 package com.crm.ticketSaleSystems.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tickets", schema = "public", catalog = "ticketsale")
+@Getter
+@Setter
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class TicketsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -19,49 +26,4 @@ public class TicketsEntity {
     @Basic
     @Column(name = "event_id")
     private int eventId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getNumber() {
-        return number;
-    }
-
-    public void setNumber(Long number) {
-        this.number = number;
-    }
-
-    public Long getSum() {
-        return sum;
-    }
-
-    public void setSum(Long sum) {
-        this.sum = sum;
-    }
-
-    public int getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TicketsEntity that = (TicketsEntity) o;
-        return Objects.equals(id, that.id) && eventId == that.eventId && Objects.equals(number, that.number) && Objects.equals(sum, that.sum);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, number, sum, eventId);
-    }
 }
