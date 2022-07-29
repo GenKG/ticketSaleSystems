@@ -1,9 +1,10 @@
 package com.crm.ticketSaleSystems.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "tickets", schema = "public", catalog = "ticketsale")
@@ -12,18 +13,29 @@ import java.util.Objects;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class TicketsEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private Long id;
+
     @Basic
     @Column(name = "number")
     private Long number;
+
     @Basic
     @Column(name = "sum")
     private Long sum;
-    @Basic
-    @Column(name = "event_id")
-    private int eventId;
+
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    private EventsEntity event;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
+    @JsonBackReference
+    private OrdersEntity order;
 }
