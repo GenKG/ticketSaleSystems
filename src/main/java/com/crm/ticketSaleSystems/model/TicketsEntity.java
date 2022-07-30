@@ -13,9 +13,9 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class TicketsEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -26,10 +26,12 @@ public class TicketsEntity {
     @Basic
     @Column(name = "sum")
     private Long sum;
+   /* @Basic
+    @Column(name = "event_id")
+    private Long event_id;*/
 
 
     @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private EventsEntity event;
 
