@@ -26,9 +26,6 @@ public class TicketsEntity {
     @Basic
     @Column(name = "sum")
     private Long sum;
-   /* @Basic
-    @Column(name = "event_id")
-    private Long event_id;*/
 
 
     @OneToOne(fetch = FetchType.LAZY)

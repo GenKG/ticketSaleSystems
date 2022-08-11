@@ -2,8 +2,6 @@ package com.crm.ticketSaleSystems.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;

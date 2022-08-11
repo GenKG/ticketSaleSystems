@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "clientName": "Tiger Nixon",
+    "clientAddress": "System Architect",
+    "clientPhone": "320.800",
+    "ticketsCount": "2011/04/25",
+    "ticketsSum": "Edinburgh"
+  },
+  {
+    "id": "2",
+    "clientName": "Garrett Winters",
+    "clientAddress": "Accountant",
+    "clientPhone": "170.750",
+    "ticketsCount": "2011/07/25",
+    "ticketsSum": "Tokyo"
+  }
+]

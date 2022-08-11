@@ -6,14 +6,14 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
-@Configuration
+/*@Configuration
 @EnableWebMvc
 public class MVCConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/styles/**")
-                .addResourceLocations("classpath:/styles/");
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("classpath:/resources/");
     }
-}
+}*/
 
