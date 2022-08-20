@@ -1,15 +1,14 @@
 package com.crm.ticketSaleSystems.service;
 
+import com.crm.ticketSaleSystems.DAO.OrdersRepository;
 import com.crm.ticketSaleSystems.model.OrderComparator;
 import com.crm.ticketSaleSystems.model.OrdersEntity;
 import com.crm.ticketSaleSystems.model.paging.*;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -24,8 +23,15 @@ public class OrderService {
     private static final Comparator<OrdersEntity> EMPTY_COMPARATOR = (e1, e2) -> 0;
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
+    private final OrdersRepository ordersRepository;
+
+    @Autowired
+    public OrderService(OrdersRepository ordersRepository) {
+        this.ordersRepository = ordersRepository;
+    }
+
     public PageArray getOrdersArray(PagingRequest pagingRequest) {
-        pagingRequest.setColumns(Stream.of("clientName", "clientAddress", "clientPhone", "ticketsCount", "ticketsSum")
+        pagingRequest.setColumns(Stream.of("clientName", "clientAddress", "clientPhone", "ticketsCount", "sum")
                 .map(Column::new)
                 .collect(Collectors.toList()));
         Page<OrdersEntity> orderPage = getOrders(pagingRequest);
@@ -46,20 +52,10 @@ public class OrderService {
     }
 
     public Page<OrdersEntity> getOrders(PagingRequest pagingRequest) {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        try {
-            List<OrdersEntity> orders = objectMapper.readValue(getClass().getClassLoader()
-                            .getResourceAsStream("orders.json"),
-                    new TypeReference<List<OrdersEntity>>() {
-                    });
-
+        List<OrdersEntity> orders = ordersRepository.findAll();
+        if (!orders.isEmpty()) {
             return getPage(orders, pagingRequest);
-
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
         }
-
         return new Page<>();
     }
 
