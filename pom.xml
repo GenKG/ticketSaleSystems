@@ -14,6 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>ticketSaleSystems</name>
     <description>CRM system for the sale of tickets</description>
+    <packaging>war</packaging>
     <properties>
         <java.version>11</java.version>
         <springboot.jpa.version>2.7.2</springboot.jpa.version>
