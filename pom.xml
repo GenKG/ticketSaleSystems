@@ -23,6 +23,18 @@
         <jquery.version>3.6.0</jquery.version>
         <webjars.version>0.45</webjars.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>repo-cuba-platform-work</id>
+            <name>repo</name>
+            <url>https://repo.cuba-platform.com/content/groups/work</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,6 +86,11 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.haulmont.yarg</groupId>
+            <artifactId>yarg</artifactId>
+            <version>2.2.14</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
