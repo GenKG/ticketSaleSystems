@@ -25,9 +25,9 @@ import java.util.Date;
 public class EventManageReport implements ManageReportService {
     private static final String EVENTS_SQL_SCRIPT =
             "SELECT e.event_name,\n" +
-                    "       e.event_date,\n" +
-                    "       e.venue,\n" +
-                    "       e.venue_address,\n" +
+                    "       e.event_date         AS event_date,\n" +
+                    "       e.venue              AS venue,\n" +
+                    "       e.venue_address      AS venue_address,\n" +
                     "       count(t.id)          AS ticket_count,\n" +
                     "       sum(t.sum)           AS tickets_sum,\n" +
                     "       count(DISTINCT o.id) AS order_count\n" +
@@ -54,7 +54,7 @@ public class EventManageReport implements ManageReportService {
         if (!path.exists()) path.mkdirs();
     }
 
-    
+
     @Override
     public byte[] create(Date dateAfter, Date dateBefore) throws IOException {
         initDirectory();
@@ -69,9 +69,9 @@ public class EventManageReport implements ManageReportService {
         reporting.setFormatterFactory(new DefaultFormatterFactory());
         reporting.setLoaderFactory(new DefaultLoaderFactory().setSqlDataLoader(new SqlDataLoader(dataSource)));
         return reporting.runReport(
-                        new RunParams(report)
-                                .param("dateAfter", new Timestamp(dateAfter.getTime()))
-                                .param("dateBefore", new Timestamp(dateBefore.getTime())))
+                new RunParams(report)
+                        .param("dateAfter", new Timestamp(dateAfter.getTime()))
+                        .param("dateBefore", new Timestamp(dateBefore.getTime())))
                 .getContent();
     }
 
