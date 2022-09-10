@@ -44,6 +44,7 @@
             <table id="example" class="table table-bordered table-responsive" style="width: 100%">
                 <thead>
                 <tr>
+                    <th>OrderId</th>
                     <th>clientName</th>
                     <th>clientAddress</th>
                     <th>clientPhone</th>
@@ -53,6 +54,7 @@
                 </thead>
                 <tfoot>
                 <tr>
+                    <th>OrderId</th>
                     <th>clientName</th>
                     <th>clientAddress</th>
                     <th>clientPhone</th>
@@ -65,31 +67,31 @@
     </div>
 
 
-    <div class="row">
-        <div class="col-lg-10 mt-5 mb-5">
-            <h3>Datatable using list of Arrays in data parameter</h3>
-            <table id="exampleArray" class="table table-bordered table-responsive" style="width: 100%">
-                <thead>
-                <tr>
-                    <th style="width:25%">clientName</th>
-                    <th style="width:25%">clientAddress</th>
-                    <th style="width:25%">clientPhone</th>
-                    <th style="width:10%" >ticketsCount</th>
-                    <th style="width:25%">sum</th>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <th>clientName</th>
-                    <th>clientAddress</th>
-                    <th>clientPhone</th>
-                    <th>ticketsCount</th>
-                    <th>sum</th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
+    <!-- <div class="row">
+         <div class="col-lg-10 mt-5 mb-5">
+             <h3>Datatable using list of Arrays in data parameter</h3>
+             <table id="exampleArray" class="table table-bordered table-responsive" style="width: 100%">
+                 <thead>
+                 <tr>
+                     <th style="width:25%">clientName</th>
+                     <th style="width:25%">clientAddress</th>
+                     <th style="width:25%">clientPhone</th>
+                     <th style="width:10%" >ticketsCount</th>
+                     <th style="width:25%">sum</th>
+                 </tr>
+                 </thead>
+                 <tfoot>
+                 <tr>
+                     <th>clientName</th>
+                     <th>clientAddress</th>
+                     <th>clientPhone</th>
+                     <th>ticketsCount</th>
+                     <th>sum</th>
+                 </tr>
+                 </tfoot>
+             </table>
+         </div>
+     </div>-->
 </div>
 
 
@@ -112,10 +114,11 @@
             }
         },
         "columns": [
-            {"data": "clientName", "width": "25%","className": "dt-body-right"},
-            {"data": "clientAddress","width": "25%","className": "dt-body-right"},
-            {"data": "clientPhone", "width": "25%","className": "dt-body-right"},
-            {"data": "ticketsCount", "width": "10%","className": "dt-body-right"},
+            {"data": "orderId", "width": "25%", "className": "dt-body-right"},
+            {"data": "clientName", "width": "25%", "className": "dt-body-right"},
+            {"data": "clientAddress", "width": "25%", "className": "dt-body-right"},
+            {"data": "clientPhone", "width": "25%", "className": "dt-body-right"},
+            {"data": "ticketsCount", "width": "10%", "className": "dt-body-right"},
             {"data": "sum", "width": "25%"}
         ]
     });

@@ -31,7 +31,7 @@ public class OrderService {
     }
 
     public PageArray getOrdersArray(PagingRequest pagingRequest) {
-        pagingRequest.setColumns(Stream.of("clientName", "clientAddress", "clientPhone", "ticketsCount", "sum")
+        pagingRequest.setColumns(Stream.of("orderId","clientName", "clientAddress", "clientPhone", "ticketsCount", "sum")
                 .map(Column::new)
                 .collect(Collectors.toList()));
         Page<OrdersEntity> orderPage = getOrders(pagingRequest);
@@ -48,7 +48,7 @@ public class OrderService {
     }
 
     private List<String> toStringList(OrdersEntity order) {
-        return Arrays.asList(order.getClientName(), order.getClientAddress(), order.getClientPhone(), order.getTicketsCount().toString(), order.getSum().toString());
+        return Arrays.asList(order.getOrderId().toString(),order.getClientName(), order.getClientAddress(), order.getClientPhone(), order.getTicketsCount().toString(), order.getSum().toString());
     }
 
     public Page<OrdersEntity> getOrders(PagingRequest pagingRequest) {

@@ -13,6 +13,10 @@ public class OrderComparator {
     static Map<Key, Comparator<OrdersEntity>> map = new HashMap<>();
 
     static {
+        map.put(new Key("orderId",Direction.asc),Comparator.comparing(OrdersEntity::getOrderId));
+        map.put(new Key("orderId",Direction.desc),Comparator.comparing(OrdersEntity::getOrderId)
+                .reversed());
+
         map.put(new Key("clientName", Direction.asc), Comparator.comparing(OrdersEntity::getClientName));
         map.put(new Key("clientName", Direction.desc), Comparator.comparing(OrdersEntity::getClientName)
                 .reversed());

@@ -26,8 +26,8 @@ public class OrderController {
         return orderService.getOrders(pagingRequest);
     }
 
-    @PostMapping("/array")
+   /* @PostMapping("/array")
     public PageArray array(@RequestBody PagingRequest pagingRequest) {
         return orderService.getOrdersArray(pagingRequest);
-    }
+    }*/
 }

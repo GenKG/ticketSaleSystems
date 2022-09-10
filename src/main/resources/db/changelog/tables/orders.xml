@@ -13,6 +13,9 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="order_id" type="int">
+                <constraints nullable="true"/>
+            </column>
             <column name="client_name" type="text">
                 <constraints nullable="true"/>
             </column>

@@ -18,6 +18,9 @@ public class OrdersEntity {
     @Id
     @Column(name = "id")
     private Long id;
+    @Basic
+    @Column(name = "order_id")
+    private Integer orderId;
 
     @Basic
     @Column(name = "client_name")
