@@ -18,18 +18,19 @@ public class BaseController {
     public BaseController(BaseService baseService) {
         this.baseService = baseService;
     }
+
     @GetMapping(path = "/getOrders")
     public List<OrdersEntity> getAllOrder() {
         return baseService.getAllOrders();
     }
 
     @GetMapping(path = "/getTickets")
-    public List<TicketsEntity> getAllTickets(){
+    public List<TicketsEntity> getAllTickets() {
         return baseService.getAllTickets();
     }
 
     @GetMapping(path = "/getEvents")
-    public List<EventsEntity> getAllEvents(){
+    public List<EventsEntity> getAllEvents() {
         return baseService.getAllEvents();
     }
 }

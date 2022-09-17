@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
@@ -32,7 +33,7 @@ public class ReportController {
         model.addAttribute("dateRange", range);
         return "report";
     }
-
+    @PostMapping(produces = "application/xlsx")
     public ResponseEntity<byte[]> getEventReport(DateRange dateRange, Model model) throws IOException {
         model.addAttribute("dateRange", dateRange);
         byte[] file = eventReport.create(dateRange.getDateTo(), dateRange.getDateFrom());
