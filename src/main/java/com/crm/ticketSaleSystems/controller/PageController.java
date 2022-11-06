@@ -10,8 +10,6 @@ public class PageController {
         return "home";
     }
 
-
-
     @GetMapping("/orders")
     public String ordersPage() {
         return "orders";
