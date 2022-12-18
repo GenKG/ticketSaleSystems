@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>ticketSaleSystems</name>
     <description>CRM system for the sale of tickets</description>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <properties>
         <java.version>11</java.version>
         <springboot.jpa.version>2.7.2</springboot.jpa.version>
@@ -47,11 +47,11 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${springboot.jpa.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring.security.version}</version>
-        </dependency>
+        		<dependency>
+        			<groupId>org.springframework.boot</groupId>
+        			<artifactId>spring-boot-starter-security</artifactId>
+        			<version>2.7.0</version>
+        		</dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>

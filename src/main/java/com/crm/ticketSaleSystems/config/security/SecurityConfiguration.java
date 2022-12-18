@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/register")
                 .and()
-                .logout().logoutSuccessUrl("/home").permitAll()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/home").permitAll()
                 .and().csrf().disable().cors();
     }
 
