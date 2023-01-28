@@ -64,7 +64,9 @@ public class EventManageReport implements ManageReportService {
         ReportBand result = bandBuilder.name("EventReport")
                 .query("EventReport", EVENTS_SQL_SCRIPT, "sql")
                 .build();
-        Report report = reportBuilder.band(result).build();
+        Report report = reportBuilder
+                .band(new BandBuilder().name("header").build())
+                .band(result).build();
         Reporting reporting = new Reporting();
         reporting.setFormatterFactory(new DefaultFormatterFactory());
         reporting.setLoaderFactory(new DefaultLoaderFactory().setSqlDataLoader(new SqlDataLoader(dataSource)));
