@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="5" author="safonov">
+        <insert tableName="events">
+            <column name="event_name" value="Anacondaz. Премьера Альбома"/>
+            <column name="event_date" value="now()" type="timestamp with timezone"/>
+            <column name="venue" value="Glavclub"/>
+            <column name="venue_address" value="Glavclub,г.Москва ул.Ордженекидзе д.11"/>
+        </insert>
+        <insert tableName="events">
+            <column name="event_name" value="Summer Sound"/>
+            <column name="event_date" value="now()" type="timestamp with timezone"/>
+            <column name="venue" value="Пространство 'Флакон'"/>
+            <column name="venue_address" value="г.Москва ул. Большая Новодмияровская д.36"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

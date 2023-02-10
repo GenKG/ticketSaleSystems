@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+<changeSet id="6" author="safonov">
+    <insert tableName="tickets">
+        <column name="number" value="218"/>
+        <column name="sum" value="3500"/>
+        <column name="order_id" value="4"/>
+        <column name="event_id" value="1"/>
+    </insert>
+    <insert tableName="tickets">
+        <column name="number" value="480"/>
+        <column name="sum" value="5000"/>
+        <column name="order_id" value="2"/>
+        <column name="event_id" value="2"/>
+    </insert>
+    <insert tableName="tickets">
+        <column name="number" value="720"/>
+        <column name="sum" value="6500"/>
+        <column name="order_id" value="1"/>
+        <column name="event_id" value="2"/>
+    </insert>
+    <insert tableName="tickets">
+        <column name="number" value="807"/>
+        <column name="sum" value="2000"/>
+        <column name="order_id" value="3"/>
+        <column name="event_id" value="1"/>
+    </insert>
+    <insert tableName="tickets">
+        <column name="number" value="184"/>
+        <column name="sum" value="6500"/>
+        <column name="order_id" value="1"/>
+        <column name="event_id" value="2"/>
+    </insert>
+    <insert tableName="tickets">
+        <column name="number" value="659"/>
+        <column name="sum" value="2000"/>
+        <column name="order_id" value="3"/>
+        <column name="event_id" value="1"/>
+    </insert>
+</changeSet>
+</databaseChangeLog>

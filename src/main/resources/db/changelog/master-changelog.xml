@@ -8,4 +8,7 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <include file="tables/events.xml" relativeToChangelogFile="true"/>
     <include file="tables/orders.xml" relativeToChangelogFile="true"/>
     <include file="tables/tickets.xml" relativeToChangelogFile="true"/>
+    <include file="tables/insert-orders.xml" relativeToChangelogFile="true"/>
+    <include file="tables/insert-events.xml" relativeToChangelogFile="true"/>
+    <include file="tables/insert-tickets.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

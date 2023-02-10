@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <preConditions>
+        <runningAs username="postgres"/>
+    </preConditions>
+    <changeSet id="4" author="safonov">
+        <insert tableName="orders">
+            <column name="order_id" value="848574"/>
+            <column name="client_name" value="Антон"/>
+            <column name="client_address" value="г.Москва ул. Покровская д.12 кв.330"/>
+            <column name="client_phone" value="+7(925)327-45-20"/>
+            <column name="tickets_count" value="2"/>
+            <column name="sum" value="13000"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="order_id" value="723423"/>
+            <column name="client_name" value="Дарья"/>
+            <column name="client_address" value="г.Москва ул. Красноярская д.5 кв.70"/>
+            <column name="client_phone" value=" "/>
+            <column name="tickets_count" value="1"/>
+            <column name="sum" value="5000"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="order_id" value="432423"/>
+            <column name="client_name" value="Леонид"/>
+            <column name="client_address" value="г.Москва ул. Красноярская д.5 кв.70"/>
+            <column name="client_phone" value=" "/>
+            <column name="tickets_count" value="2"/>
+            <column name="sum" value="4000"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="order_id" value="985834"/>
+            <column name="client_name" value="Светлана"/>
+            <column name="client_address" value="г.Москва ул. Ленина д.15"/>
+            <column name="client_phone" value="+7(905)133-25-40"/>
+            <column name="tickets_count" value="1"/>
+            <column name="sum" value="3500"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
