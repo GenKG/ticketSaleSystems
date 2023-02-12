@@ -32,7 +32,8 @@ public class BaseService {
     public List<TicketsEntity> getAllTickets() {
         return ticketsRepository.findAll();
     }
-    public List<EventsEntity> getAllEvents(){
+
+    public List<EventsEntity> getAllEvents() {
         return eventsRepository.findAll();
     }
 
