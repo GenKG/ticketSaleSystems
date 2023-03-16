@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public final class ReportNameGenerator {
-    public ReportNameGenerator() {
+    private ReportNameGenerator() {
     }
 
     public static String reportNameGenerate(String baseName, LocalDate reportDate, String extensionType) {
