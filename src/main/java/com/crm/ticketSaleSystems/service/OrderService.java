@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,7 +32,7 @@ public class OrderService {
     }
 
     public PageArray getOrdersArray(PagingRequest pagingRequest) {
-        pagingRequest.setColumns(Stream.of("orderId","clientName", "clientAddress", "clientPhone", "ticketsCount", "sum")
+        pagingRequest.setColumns(Stream.of("orderId", "clientName", "clientAddress", "clientPhone", "ticketsCount", "sum")
                 .map(Column::new)
                 .collect(Collectors.toList()));
         Page<OrdersEntity> orderPage = getOrders(pagingRequest);
@@ -48,7 +49,7 @@ public class OrderService {
     }
 
     private List<String> toStringList(OrdersEntity order) {
-        return Arrays.asList(order.getOrderId().toString(),order.getClientName(), order.getClientAddress(), order.getClientPhone(), order.getTicketsCount().toString(), order.getSum().toString());
+        return Arrays.asList(order.getOrderId().toString(), order.getClientName(), order.getClientAddress(), order.getClientPhone(), order.getTicketsCount().toString(), order.getSum().toString());
     }
 
     public Page<OrdersEntity> getOrders(PagingRequest pagingRequest) {
@@ -89,13 +90,17 @@ public class OrderService {
                 .getValue();
 
         return order -> order.getClientName()
-                .toLowerCase()
-                .contains(value)
+                .startsWith(value)
                 || order.getClientAddress()
-                .toLowerCase()
-                .contains(value)
+                .startsWith(value)
                 || order.getClientPhone()
                 .toLowerCase()
+                .contains(value)
+                || order.getOrderId()
+                .toString()
+                .contains(value)
+                || order.getSum()
+                .toString()
                 .contains(value);
     }
 
@@ -113,11 +118,7 @@ public class OrderService {
                     .get(columnIndex);
 
             Comparator<OrdersEntity> comparator = OrderComparator.getComparator(column.getData(), order.getDir());
-            if (comparator == null) {
-                return EMPTY_COMPARATOR;
-            }
-
-            return comparator;
+            return Objects.requireNonNullElse(comparator, EMPTY_COMPARATOR);
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);

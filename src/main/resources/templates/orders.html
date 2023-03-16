@@ -71,20 +71,6 @@
             {"data": "sum", "width": "25%"}
         ]
     });
-
-    $('#exampleArray').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": "/ordersTable/array",
-            "type": "POST",
-            "dataType": "json",
-            "contentType": "application/json",
-            "data": function (d) {
-                return JSON.stringify(d);
-            }
-        }
-    });
 </script>
 </body>
 </html>
