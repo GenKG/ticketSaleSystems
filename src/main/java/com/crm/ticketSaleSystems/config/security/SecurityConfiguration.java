@@ -1,5 +1,6 @@
 package com.crm.ticketSaleSystems.config.security;
 
+import com.crm.ticketSaleSystems.security.error.CustomAccessDeniedHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -19,6 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/home/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/actuator/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/**").permitAll()
                 //.antMatchers("ordersTable/**").permitAll()
                 /*.antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/css/**").permitAll()
@@ -30,13 +33,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/assets/**").permitAll()
                 .antMatchers("/resources/**").permitAll()*/
                 .and()
-                .authorizeRequests().antMatchers(HttpMethod.GET, "/orders/**").hasAnyRole("FINANCE", "ACCOUNTANT", "ADMIN")
+                .authorizeRequests().antMatchers(HttpMethod.GET, "/orders/**").hasAnyRole( "ACCOUNTANT", "ADMIN")
                 .and()
-                .authorizeRequests().antMatchers(HttpMethod.GET, "/reports/**").hasAnyRole("ADMIN", "ACCOUNTANT")
+                .authorizeRequests().antMatchers(HttpMethod.GET, "/reports/**").hasAnyRole("ADMIN", "ACCOUNTANT","FINANCE")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/register")
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/home").permitAll()
                 .and().csrf().disable().cors();
@@ -60,5 +65,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .roles("ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(finance, accountant, admin);
+    }
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler(){
+        return new CustomAccessDeniedHandler();
     }
 }
